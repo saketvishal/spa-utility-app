@@ -18,10 +18,16 @@
   -->
 
   <main>
-    <route path="#/angular">
+    <route path="/page1">
       <application name="angular-app"></application>
     </route>
-    <route default>
+    <!-- <route default>
+      <application name="@app/react-app"></application>
+    </route> -->
+    <route path="/">
+      <application name="header"></application>
+    </route>
+    <route path="/page2">
       <application name="@app/react-app"></application>
     </route>
   </main>

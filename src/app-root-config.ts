@@ -25,4 +25,4 @@ function sendEvent() {
   );
 }
 
-document.getElementById("parent").addEventListener("click", sendEvent);
+// document.getElementById("parent").addEventListener("click", sendEvent);

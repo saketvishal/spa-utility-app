@@ -21,4 +21,13 @@ export function getData(url) {
   });
 }
 
-export const state$ = new BehaviorSubject({});
+export const state$ = new BehaviorSubject([
+  {
+    name: "fruit",
+    value: "orange",
+  },
+  {
+    name: "fruit",
+    value: "apple",
+  },
+]);

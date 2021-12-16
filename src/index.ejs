@@ -49,6 +49,7 @@
   <script type="systemjs-importmap">
     {
       "imports": {
+        "header": "//localhost:9002/app-header.js",
         "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
         "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
         "@app/root-config": "//localhost:9000/app-root-config.js",
@@ -79,10 +80,12 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
+  <main></main>
   <script>
     System.import('@app/root-config');
   </script>
+  
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
-  <button id="parent">Send Event</button>
+  <!-- <button id="parent">Send Event</button> -->
 </body>
 </html>
