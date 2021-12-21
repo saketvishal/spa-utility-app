@@ -2,6 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import { getData, state$ } from "@app/utility";
 import "./root.component.css";
 
+
 export default function Root(props) {
   const [dataForList, setDataForList] = useState({});
 
@@ -34,20 +35,31 @@ export default function Root(props) {
   const propsData = Array.from(dataForList);
   const localpropsData = Array.from(localData);
 
-  const addItem = (index) => {
+  const addItem = (index,storeScope) => {
     let propsData1 = Array.from(dataForList);
-    console.log(propsData1);
+    console.log(index);
+    const localpropsData = Array.from(localData);
 
-    propsData1.push({
-      name: "List item 3",
-      value: "List item 3",
-    });
-    setDataForList(propsData1);
+   
+       let selectedValue = localpropsData.slice(index);
+       console.log(selectedValue);
+       console.log(localpropsData);
+      console.log(localpropsData.splice(index, 1));
 
-    state$.next(propsData1);
+      // setLocalData(localpropsData.splice(index, 1));
+      // propsData1.push(selectedValue[0]);
+      
+
+    // // propsData1.push({
+    // //   name: "List item 3",
+    // //   value: "List item 3",
+    // // });
+     setDataForList(propsData1);
+
+    // state$.next(propsData1);
   };
 
-  const removeItem = (index) => {
+  const removeItem = (index,storeScope) => {
     // console.log('removeItem');
     // console.log(index);
     //  for (let [i, user] of propsData.entries()) {
@@ -56,6 +68,8 @@ export default function Root(props) {
     //     }
     //  }
   };
+
+
 
   return (
     <div>
@@ -70,28 +84,31 @@ export default function Root(props) {
       <div className="divText">
         anything:
         <ul>
-          {propsData.map((el, index) => (
-            <li key={index}>
-              {" "}
+          {
+          propsData.map((el, index) => (
+            <li key={index}>              
               <img
-                src="https://img.icons8.com/fluency/48/000000/minus.png"
-                onClick={({ index }) => removeItem({ index })}
-              />{" "}
-              {el.value}{" "}
+                src="https://img.icons8.com/fluency/48/000000/minus.png"                
+                onClick={( ) => removeItem({index},"global")  }
+              />
+              {el.value}
             </li>
           ))}
           {localpropsData.map((el, index) => (
             <li key={index}>
-              {" "}
+              
               <img
-                src="https://img.icons8.com/color/48/000000/plus-math.png"
-                onClick={({ index }) => addItem({ index })}
+                src="https://img.icons8.com/color/48/000000/plus-math.png"                                
+                onClick={( ) => addItem(index,"local") }
               />
-              {el.value}{" "}
+              {el.value}
             </li>
           ))}
         </ul>
       </div>
     </div>
   );
+
+
+
 }
